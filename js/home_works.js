@@ -18,13 +18,50 @@ btnMail.addEventListener('click', () => {
 const parentBlock = document.querySelector('.parent_block');
 const childBlock = document.querySelector('.child_block');
 
-let newLeftStyle = 0;
+let positionX = 0 , positionY = 0;
 
-const newFunction = () => {
-    newLeftStyle++
-    childBlock.style.left = `${newLeftStyle}px`;
-    if (newLeftStyle <= 448) {
-        requestAnimationFrame(newFunction);
-    }
+const toRight = parentBlock.clientWidth - childBlock.clientWidth;
+const toBottom = parentBlock.clientHeight - childBlock.clientHeight;
+
+const moveBlock = () => {
+  requestAnimationFrame(moveBlock)
+  childBlock.style.top = `${positionY}px`;
+  childBlock.style.left = `${positionX}px`;
+  if (positionX < toRight && positionY === 0) positionX++;
+  else if (positionX >= toRight && positionY < toBottom) positionY++;
+  else if (positionY >= toBottom && positionX > 0) positionX--;
+  else if (positionX === 0 && positionY > 0) positionY--;
 }
-newFunction()
+moveBlock()
+
+//HOMEWORK 2
+  
+const startBtn = document.querySelector('#start')
+const stopBtn = document.querySelector('#stop')
+const resetBtn = document.querySelector('#reset')
+
+const secondsValue = document.querySelector('#seconds')
+
+let interval = null
+let seconds = 0
+
+startBtn.addEventListener('click', () => {
+  if (interval) return;
+
+  interval = setInterval(() => {
+    seconds++
+    secondsValue.innerText = seconds
+  }, 1000)
+})
+
+stopBtn.addEventListener('click', ()=>{
+  clearInterval(interval)
+  interval=null
+})
+
+resetBtn.addEventListener('click',()=>{
+  clearInterval(interval)
+  interval=null
+  seconds=0
+  secondsValue.innerText=seconds
+})

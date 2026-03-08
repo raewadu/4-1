@@ -65,3 +65,5 @@ resetBtn.addEventListener('click',()=>{
   seconds=0
   secondsValue.innerText=seconds
 })
+
+

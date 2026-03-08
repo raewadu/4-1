@@ -24,7 +24,7 @@ modal.addEventListener('click', (event) => {
 });
 
 const handleScroll = () => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+  if (window.innerHeight + window.scrollY +1 >= document.body.offsetHeight) {
     showModal();
     window.removeEventListener('scroll', handleScroll);
   }

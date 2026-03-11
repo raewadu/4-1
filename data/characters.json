@@ -1,17 +1,17 @@
 [
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Гейб Ньюэлл",
+    "age": 63,
+    "photo": "https://cs14.pikabu.ru/post_img/2021/05/25/2/162190497011689158.jpg"
   },
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Хидэтака Миядзаки",
+    "age": 51,
+    "photo": "https://static.tildacdn.com/tild3166-3766-4233-a565-353334303965/Cover.jpg"
   },
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Антон Чигур",
+    "age": 40,
+    "photo": "https://images.meme-arsenal.com/b8690790badfaec32a70e0234a7de333.jpg"
   }
 ]

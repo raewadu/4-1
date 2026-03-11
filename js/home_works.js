@@ -67,3 +67,34 @@ resetBtn.addEventListener('click',()=>{
 })
 
 
+//HW 4
+
+const charList=document.querySelector('.characters-list')
+
+const request = new XMLHttpRequest;
+request.open('GET', ('../data/characters.json'))
+request.setRequestHeader('Content-Type', 'application.json')
+request.send();
+
+request.onload= ()=>{
+  const response = JSON.parse(request.responseText)
+  console.log(response);
+  response.forEach((person) => {
+  const char=document.createElement("div")
+  char.classList.add("character-card")
+  charList.appendChild(char)  
+  char.innerHTML=`
+  <img src="${person.photo}" alt="${person.name}" class="character-photo">
+  <h3>${person.name}</h3>
+  <h4>${person.age}</h4>`
+});
+}
+const requestBio = new XMLHttpRequest;
+requestBio.open('GET', ('../data/bio.json'))
+requestBio.setRequestHeader('Content-Type', 'application.json')
+requestBio.send();
+requestBio.onload=()=>{
+  const responseBio=JSON.parse(requestBio.responseText)
+  console.log(responseBio);
+  
+}

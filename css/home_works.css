@@ -227,3 +227,12 @@
     height: 100%;
     object-fit: cover;
 }
+.cards {
+    background: black;
+    padding: 100px 0;
+}
+.card-block{
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+}

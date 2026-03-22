@@ -69,32 +69,52 @@ resetBtn.addEventListener('click',()=>{
 
 //HW 4
 
-const charList=document.querySelector('.characters-list')
+const charList = document.querySelector('.characters-list');
 
-const request = new XMLHttpRequest;
-request.open('GET', ('../data/characters.json'))
-request.setRequestHeader('Content-Type', 'application.json')
-request.send();
+async function loadCharacters() {
+  try {
+    const response = await fetch('../data/characters.json');
 
-request.onload= ()=>{
-  const response = JSON.parse(request.responseText)
-  console.log(response);
-  response.forEach((person) => {
-  const char=document.createElement("div")
-  char.classList.add("character-card")
-  charList.appendChild(char)  
-  char.innerHTML=`
-  <img src="${person.photo}" alt="${person.name}" class="character-photo">
-  <h3>${person.name}</h3>
-  <h4>${person.age}</h4>`
-});
+    if (!response.ok) {
+      throw new Error('Ошибка загрузки characters.json');
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+    data.forEach((person) => {
+      const char = document.createElement("div");
+      char.classList.add("character-card");
+
+      char.innerHTML = `
+        <img src="${person.photo}" alt="${person.name}" class="character-photo">
+        <h3>${person.name}</h3>
+        <h4>${person.age}</h4>
+      `;
+
+      charList.appendChild(char);
+    });
+
+  } catch (error) {
+    console.error('Ошибка:', error);
+  }
 }
-const requestBio = new XMLHttpRequest;
-requestBio.open('GET', ('../data/bio.json'))
-requestBio.setRequestHeader('Content-Type', 'application.json')
-requestBio.send();
-requestBio.onload=()=>{
-  const responseBio=JSON.parse(requestBio.responseText)
-  console.log(responseBio);
-  
+
+loadCharacters();
+async function loadBio() {
+  try {
+    const response = await fetch('../data/bio.json');
+
+    if (!response.ok) {
+      throw new Error('Ошибка загрузки bio.json');
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+  } catch (error) {
+    console.error('Ошибка:', error);
+  }
 }
+
+loadBio();
